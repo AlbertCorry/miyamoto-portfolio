@@ -32,13 +32,8 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 			<section class="hero">
 				<div class="container hero-grid">
 					<div class="hero-content">
-						<div class="hero-identity">
-							<Logo size="lg" alt={PERSON.name} />
-							<div>
-								<span class="section-label">Portfolio</span>
-								<h1>{PERSON.name}</h1>
-							</div>
-						</div>
+						<span class="section-label">Portfolio</span>
+						<h1>{PERSON.name}</h1>
 						<p class="hero-title">{PERSON.title}</p>
 						<p class="hero-tagline">{PERSON.tagline}</p>
 						<div class="hero-actions">
@@ -309,17 +304,6 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 
 	.hero-content {
 		animation: fadeUp 1s var(--ease) both;
-	}
-
-	.hero-identity {
-		display: flex;
-		align-items: center;
-		gap: 1.25rem;
-		margin-bottom: 0.5rem;
-	}
-
-	.hero-identity h1 {
-		margin-top: 0.25rem;
 	}
 
 	.hero-title {

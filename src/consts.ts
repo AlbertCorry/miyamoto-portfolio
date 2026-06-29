@@ -137,7 +137,7 @@ export const EDUCATION = {
 	school: 'Kyoto University',
 	period: '2017 — 2021',
 	icon: 'graduation',
-	avatar: AVATARS.profile,
+	avatar: '/images/portfolio/mirror-selfie.png',
 };
 
 export const ACCOMPLISHMENTS = [
