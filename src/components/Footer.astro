@@ -8,13 +8,13 @@ const year = new Date().getFullYear();
 	<div class="container footer-inner">
 		<div class="footer-brand">
 			<span class="footer-name">{SITE_TITLE}</span>
-			<p>{PERSON.tagline}</p>
+			<p>{PERSON.title}</p>
 		</div>
 		<div class="footer-links">
-			<a href={SOCIAL.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-			<a href={SOCIAL.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-			<a href={SOCIAL.twitter} target="_blank" rel="noopener noreferrer">Twitter</a>
 			<a href={`mailto:${PERSON.email}`}>{PERSON.email}</a>
+			<a href={`tel:${PERSON.phone.replace(/\s/g, '')}`}>{PERSON.phone}</a>
+			<a href={SOCIAL.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+			<a href={SOCIAL.github} target="_blank" rel="noopener noreferrer">GitHub</a>
 		</div>
 	</div>
 	<div class="container footer-copy">
