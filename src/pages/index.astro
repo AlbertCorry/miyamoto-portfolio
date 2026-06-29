@@ -2,6 +2,8 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Avatar from '../components/Avatar.astro';
+import SectionIcon from '../components/SectionIcon.astro';
 import {
 	SITE_DESCRIPTION,
 	PERSON,
@@ -29,8 +31,13 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 			<section class="hero">
 				<div class="container hero-grid">
 					<div class="hero-content">
-						<span class="section-label">Portfolio</span>
-						<h1>{PERSON.name}</h1>
+						<div class="hero-identity">
+							<Avatar src={PERSON.avatar} alt={PERSON.name} size="lg" />
+							<div>
+								<span class="section-label">Portfolio</span>
+								<h1>{PERSON.name}</h1>
+							</div>
+						</div>
 						<p class="hero-title">{PERSON.title}</p>
 						<p class="hero-tagline">{PERSON.tagline}</p>
 						<div class="hero-actions">
@@ -64,7 +71,10 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 							{
 								SKILL_GROUPS.map((group) => (
 									<div class="skill-group">
-										<h3>{group.label}</h3>
+										<div class="skill-group-header">
+											<SectionIcon name={group.icon} size={18} />
+											<h3>{group.label}</h3>
+										</div>
 										<div class="skills-tags">
 											{group.skills.map((skill) => (
 												<span class="skill-tag">{skill}</span>
@@ -80,12 +90,18 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 
 			<section id="projects" class="project section">
 				<div class="container">
-					<div class="section-header">
-						<span class="section-label">Featured Project</span>
-						<h2>{FEATURED_PROJECT.title}</h2>
-						<p class="project-meta">
-							{FEATURED_PROJECT.role} · {FEATURED_PROJECT.period}
-						</p>
+					<div class="section-header project-header">
+						<div class="project-header-top">
+							<Avatar src={FEATURED_PROJECT.avatar} alt={FEATURED_PROJECT.title} size="lg" />
+							<div>
+								<span class="section-label">Featured Project</span>
+								<h2>{FEATURED_PROJECT.title}</h2>
+								<p class="project-meta">
+									<SectionIcon name={FEATURED_PROJECT.icon} size={16} />
+									{FEATURED_PROJECT.role} · {FEATURED_PROJECT.period}
+								</p>
+							</div>
+						</div>
 						<p>{FEATURED_PROJECT.summary}</p>
 					</div>
 
@@ -93,6 +109,7 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 						{
 							FEATURED_PROJECT.stats.map((stat) => (
 								<div class="stat">
+									<SectionIcon name={stat.icon} size={18} />
 									<span class="stat-value">{stat.value}</span>
 									<span class="stat-label">{stat.label}</span>
 								</div>
@@ -151,7 +168,10 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 							{
 								FEATURED_PROJECT.aiRoadmap.map((item) => (
 									<div class="roadmap-card">
-										<h4>{item.title}</h4>
+										<div class="roadmap-card-header">
+											<SectionIcon name={item.icon} size={18} />
+											<h4>{item.title}</h4>
+										</div>
 										<p>{item.description}</p>
 									</div>
 								))
@@ -173,19 +193,31 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 						</p>
 
 						<div class="education-block">
-							<span class="section-label">Education</span>
-							<h3>{EDUCATION.degree}</h3>
-							<p>
-								{EDUCATION.school} · {EDUCATION.period}
-							</p>
+							<div class="education-header">
+								<Avatar src={EDUCATION.avatar} alt={EDUCATION.school} size="md" />
+								<div>
+									<span class="section-label">Education</span>
+									<h3>{EDUCATION.degree}</h3>
+									<p>
+										<span class="education-school">
+											<SectionIcon name={EDUCATION.icon} size={14} />
+											{EDUCATION.school} · {EDUCATION.period}
+										</span>
+									</p>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="experience-list">
 						{
 							EXPERIENCE.map((job) => (
 								<div class="experience-item">
-									<div class="experience-period">{job.period}</div>
+									<Avatar src={job.avatar} alt={job.company} size="lg" />
 									<div class="experience-details">
+										<div class="experience-meta">
+											<SectionIcon name={job.icon} size={16} />
+											<span class="experience-period">{job.period}</span>
+										</div>
 										<h3>{job.role}</h3>
 										<span class="company">{job.company}</span>
 										<ul>
@@ -206,22 +238,36 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 					<span class="section-label">Accomplishments</span>
 					<h2>Impressive accomplishments</h2>
 					<ul class="accomplishment-list">
-						{ACCOMPLISHMENTS.map((item) => <li>{item}</li>)}
+						{
+							ACCOMPLISHMENTS.map((item) => (
+								<li>
+									<SectionIcon name={item.icon} size={18} />
+									<span>{item.text}</span>
+								</li>
+							))
+						}
 					</ul>
 				</div>
 			</section>
 
 			<section id="contact" class="contact section">
 				<div class="container contact-inner">
+					<Avatar src={PERSON.avatar} alt={PERSON.name} size="xl" />
 					<span class="section-label">Get in Touch</span>
 					<h2>Let's build something meaningful</h2>
 					<p>
 						Interested in collaborating on enterprise software, SaaS products, or AI-powered
 						solutions? I'd love to hear from you.
 					</p>
-					<a href={`mailto:${PERSON.email}`} class="contact-email">{PERSON.email}</a>
-					<p class="contact-detail">
-						<a href={`tel:${PERSON.phone.replace(/\s/g, '')}`}>{PERSON.phone}</a>
+					<a href={`mailto:${PERSON.email}`} class="contact-email">
+						<SectionIcon name="mail" size={18} />
+						{PERSON.email}
+					</a>
+					<p class="contact-detail contact-phone">
+						<a href={`tel:${PERSON.phone.replace(/\s/g, '')}`}>
+							<SectionIcon name="phone" size={16} />
+							{PERSON.phone}
+						</a>
 					</p>
 					<p class="contact-detail contact-address">{PERSON.location}</p>
 					<div class="contact-actions">
@@ -262,6 +308,17 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 
 	.hero-content {
 		animation: fadeUp 1s var(--ease) both;
+	}
+
+	.hero-identity {
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.hero-identity h1 {
+		margin-top: 0.25rem;
 	}
 
 	.hero-title {
@@ -399,6 +456,13 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 		font-weight: 400;
 		letter-spacing: 0.03em;
 		color: var(--accent);
+		margin: 0;
+	}
+
+	.skill-group-header {
+		display: flex;
+		align-items: center;
+		gap: 0.625rem;
 		margin-bottom: 0.625rem;
 	}
 
@@ -436,10 +500,21 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 		font-weight: 300;
 	}
 
+	.project-header-top {
+		display: flex;
+		align-items: flex-start;
+		gap: 1.25rem;
+		margin-bottom: 1.25rem;
+	}
+
 	.project-meta {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
 		font-size: 0.9375rem;
 		color: var(--accent);
-		margin-bottom: 1rem !important;
+		margin-bottom: 0 !important;
+		margin-top: 0.5rem;
 	}
 
 	.project-stats {
@@ -456,6 +531,10 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 		border: 1px solid var(--border);
 		border-radius: var(--radius-md);
 		transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.75rem;
 	}
 
 	.stat:hover {
@@ -595,7 +674,14 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 		font-size: 0.9375rem;
 		font-weight: 400;
 		color: var(--text);
-		margin-bottom: 0.375rem;
+		margin: 0;
+	}
+
+	.roadmap-card-header {
+		display: flex;
+		align-items: center;
+		gap: 0.625rem;
+		margin-bottom: 0.5rem;
 	}
 
 	.roadmap-card p {
@@ -627,6 +713,18 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 		border-radius: var(--radius-md);
 	}
 
+	.education-header {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+	}
+
+	.education-school {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
 	.education-block h3 {
 		font-family: var(--sans);
 		font-size: 1rem;
@@ -647,9 +745,8 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 	}
 
 	.experience-item {
-		display: grid;
-		grid-template-columns: 7.5rem 1fr;
-		gap: 1.5rem;
+		display: flex;
+		gap: 1.25rem;
 		padding: 1.75rem;
 		background: var(--bg-elevated);
 		border: 1px solid var(--border);
@@ -662,11 +759,17 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 		transform: translateY(-2px);
 	}
 
+	.experience-meta {
+		display: flex;
+		align-items: center;
+		gap: 0.625rem;
+		margin-bottom: 0.5rem;
+	}
+
 	.experience-period {
 		font-size: 0.8125rem;
 		font-weight: 300;
 		color: var(--accent);
-		padding-top: 0.125rem;
 	}
 
 	.experience-details h3 {
@@ -715,6 +818,9 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 	}
 
 	.accomplishment-list li {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.875rem;
 		padding: 1.25rem 1.5rem;
 		font-size: 0.9375rem;
 		font-weight: 300;
@@ -723,6 +829,10 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 		border: 1px solid var(--border);
 		border-radius: var(--radius-md);
 		transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+	}
+
+	.accomplishment-list li span {
+		flex: 1;
 	}
 
 	.accomplishment-list li:hover {
@@ -741,6 +851,10 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 		background: var(--bg-elevated);
 		border: 1px solid var(--border);
 		border-radius: var(--radius-lg);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.25rem;
 	}
 
 	.contact-inner h2 {
@@ -753,9 +867,11 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 	}
 
 	.contact-email {
-		display: block;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.625rem;
 		font-family: var(--serif);
-		font-size: clamp(1.35rem, 4vw, 2rem);
+		font-size: clamp(1.2rem, 3.5vw, 1.75rem);
 		color: var(--accent);
 		margin-bottom: 0.75rem;
 		text-decoration: none;
@@ -773,6 +889,9 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 	}
 
 	.contact-detail a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
 		color: var(--text-muted);
 		text-decoration: none;
 		transition: color 0.3s var(--ease);
@@ -840,8 +959,8 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 		}
 
 		.experience-item {
-			grid-template-columns: 1fr;
-			gap: 0.375rem;
+			flex-direction: column;
+			align-items: flex-start;
 		}
 
 		.contact-inner {

@@ -10,6 +10,14 @@ export const PERSON = {
 	email: 'terryq206@gmail.com',
 	phone: '+81 70-9358-3639',
 	location: 'Toyosu, Kōtō-ku, Tokyo 135-0061, Japan',
+	avatar: '/images/avatars/avatar-winter.png',
+};
+
+export const AVATARS = {
+	profile: '/images/avatars/avatar-winter.png',
+	driving: '/images/avatars/avatar-driving.png',
+	brand: '/images/avatars/avatar-icon.png',
+	est: '/images/avatars/avatar-est.png',
 };
 
 export const SOCIAL = {
@@ -57,6 +65,7 @@ export const IMAGES = {
 export const SKILL_GROUPS = [
 	{
 		label: 'Frameworks & Technologies',
+		icon: 'code',
 		skills: [
 			'React',
 			'Next.js',
@@ -73,6 +82,7 @@ export const SKILL_GROUPS = [
 	},
 	{
 		label: 'AI & Data',
+		icon: 'brain',
 		skills: [
 			'OpenAI APIs',
 			'LLM Applications',
@@ -84,6 +94,7 @@ export const SKILL_GROUPS = [
 	},
 	{
 		label: 'Languages',
+		icon: 'globe',
 		skills: ['English', 'Japanese'],
 	},
 ];
@@ -93,6 +104,8 @@ export const EXPERIENCE = [
 		role: 'Head of Product & Technology',
 		company: 'Japan EST Group System',
 		period: '2022 — 2023',
+		avatar: AVATARS.est,
+		icon: 'building',
 		highlights: [
 			'Leading product strategy and technical execution',
 			'Managing engineering, design, and product teams',
@@ -105,6 +118,8 @@ export const EXPERIENCE = [
 		role: 'Senior Product Manager',
 		company: 'Technology Company Startup of Japan',
 		period: '2020 — 2023',
+		avatar: AVATARS.driving,
+		icon: 'rocket',
 		highlights: [
 			'Managed product development from concept to launch',
 			'Coordinated engineering and design teams',
@@ -119,19 +134,23 @@ export const EDUCATION = {
 	degree: 'Bachelor of Engineering (B.Eng.), Computer Science',
 	school: 'Kyoto University',
 	period: '2017 — 2021',
+	icon: 'graduation',
+	avatar: AVATARS.profile,
 };
 
 export const ACCOMPLISHMENTS = [
-	'Launched multiple SaaS products serving thousands of users',
-	'Built and scaled engineering teams from early-stage startup environments',
-	'Successfully led cross-functional teams across product, engineering, and operations',
-	'Developed AI-powered applications for consumer and enterprise markets',
+	{ text: 'Launched multiple SaaS products serving thousands of users', icon: 'rocket' },
+	{ text: 'Built and scaled engineering teams from early-stage startup environments', icon: 'users' },
+	{ text: 'Successfully led cross-functional teams across product, engineering, and operations', icon: 'briefcase' },
+	{ text: 'Developed AI-powered applications for consumer and enterprise markets', icon: 'brain' },
 ];
 
 export const FEATURED_PROJECT = {
 	title: 'EST Group Enterprise Management Platform',
 	role: 'Technical Lead / Team Lead',
 	period: '2022 — Present',
+	avatar: AVATARS.est,
+	icon: 'layers',
 	summary:
 		'A large-scale enterprise digital transformation initiative that replaced fragmented legacy systems with a unified, production-grade business management platform. As Technical Lead, I architected the system, led the engineering team, and defined the long-term technical strategy — including the AI roadmap launched in 2025.',
 	overview:
@@ -165,9 +184,9 @@ export const FEATURED_PROJECT = {
 		'Shared Libraries & Logging',
 	],
 	stats: [
-		{ value: '13', label: 'Integrated Modules' },
-		{ value: '4', label: 'Team Members' },
-		{ value: '3+', label: 'Years in Production' },
+		{ value: '13', label: 'Integrated Modules', icon: 'layers' },
+		{ value: '4', label: 'Team Members', icon: 'users' },
+		{ value: '3+', label: 'Years in Production', icon: 'chart' },
 	],
 	modules: [
 		'Enterprise Dashboard',
@@ -190,18 +209,22 @@ export const FEATURED_PROJECT = {
 		{
 			title: 'AI-Powered Workflow Automation',
 			description: 'Automate repetitive operational tasks and approval chains.',
+			icon: 'sparkles',
 		},
 		{
 			title: 'Automated Document Processing',
 			description: 'AI extraction and classification of invoices, contracts, and records.',
+			icon: 'layers',
 		},
 		{
 			title: 'Intelligent Business Assistants',
 			description: 'Context-aware assistants for scheduling, reporting, and queries.',
+			icon: 'brain',
 		},
 		{
 			title: 'Predictive Analytics & Mobile Apps',
 			description: 'Business intelligence dashboards and mobile-first access for field teams.',
+			icon: 'chart',
 		},
 	],
 };

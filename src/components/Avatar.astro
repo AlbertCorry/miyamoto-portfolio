@@ -1,0 +1,38 @@
+---
+interface Props {
+	src: string;
+	alt: string;
+	size?: 'sm' | 'md' | 'lg' | 'xl';
+	class?: string;
+}
+
+const { src, alt, size = 'md', class: className = '' } = Astro.props;
+
+const sizes = {
+	sm: '2.25rem',
+	md: '3rem',
+	lg: '4rem',
+	xl: '5.5rem',
+};
+---
+
+<img
+	src={src}
+	alt={alt}
+	class:list={['avatar', `avatar-${size}`, className]}
+	style={`--avatar-size: ${sizes[size]}`}
+	loading="lazy"
+/>
+
+<style>
+	.avatar {
+		width: var(--avatar-size);
+		height: var(--avatar-size);
+		border-radius: 50%;
+		object-fit: cover;
+		object-position: center top;
+		border: 2px solid rgba(212, 184, 150, 0.25);
+		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+		flex-shrink: 0;
+	}
+</style>
