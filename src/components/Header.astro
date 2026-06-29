@@ -22,9 +22,9 @@ import { SITE_TITLE } from '../consts';
 		left: 0;
 		right: 0;
 		z-index: 100;
-		padding: 1.25rem 0;
-		background: rgba(12, 12, 12, 0.85);
-		backdrop-filter: blur(12px);
+		padding: 1rem 0;
+		background: rgba(18, 17, 16, 0.72);
+		backdrop-filter: blur(20px);
 		border-bottom: 1px solid var(--border);
 	}
 
@@ -37,10 +37,10 @@ import { SITE_TITLE } from '../consts';
 
 	.logo {
 		font-family: var(--serif);
-		font-size: 1.5rem;
+		font-size: 1.35rem;
 		color: var(--text);
 		text-decoration: none;
-		letter-spacing: 0.02em;
+		transition: color 0.3s var(--ease);
 	}
 
 	.logo:hover {
@@ -49,16 +49,15 @@ import { SITE_TITLE } from '../consts';
 
 	.nav-links {
 		display: flex;
-		gap: 2rem;
+		gap: 1.75rem;
 	}
 
 	.nav-links a {
-		font-size: 0.8125rem;
-		font-weight: 500;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
+		font-size: 0.9375rem;
+		font-weight: 400;
 		color: var(--text-muted);
 		text-decoration: none;
+		transition: color 0.3s var(--ease);
 	}
 
 	.nav-links a:hover {
@@ -66,20 +65,25 @@ import { SITE_TITLE } from '../consts';
 	}
 
 	.nav-cta {
-		font-size: 0.75rem;
-		font-weight: 500;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-		color: var(--accent);
+		font-size: 0.875rem;
+		font-weight: 400;
+		color: var(--text);
 		text-decoration: none;
 		padding: 0.5rem 1.25rem;
-		border: 1px solid var(--accent);
-		transition: background 0.2s ease, color 0.2s ease;
+		background: var(--accent-soft);
+		border: 1px solid rgba(212, 184, 150, 0.2);
+		border-radius: var(--radius-full);
+		transition:
+			background 0.3s var(--ease),
+			border-color 0.3s var(--ease),
+			transform 0.3s var(--ease);
 	}
 
 	.nav-cta:hover {
-		background: var(--accent);
-		color: var(--bg);
+		background: rgba(212, 184, 150, 0.2);
+		border-color: rgba(212, 184, 150, 0.4);
+		color: var(--text);
+		transform: translateY(-1px);
 	}
 
 	@media (max-width: 768px) {

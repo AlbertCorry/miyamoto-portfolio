@@ -24,7 +24,7 @@ export const ABOUT = [
 
 export const IMAGES = {
 	hero: '/images/portfolio/formal-suit.png',
-	about: '/images/portfolio/winter-portrait.png',
+	about: '/images/portfolio/office-cafe.png',
 	gallery: [
 		{
 			src: '/images/portfolio/hero-beach.png',
@@ -45,11 +45,6 @@ export const IMAGES = {
 			src: '/images/portfolio/formal-suit.png',
 			alt: 'Professional portrait',
 			caption: 'Professional',
-		},
-		{
-			src: '/images/portfolio/winter-portrait.png',
-			alt: 'Winter portrait',
-			caption: 'Winter in Japan',
 		},
 		{
 			src: '/images/portfolio/driving.png',

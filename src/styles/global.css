@@ -1,18 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap');
 
 :root {
-	--bg: #0c0c0c;
-	--bg-elevated: #141414;
-	--bg-card: #1a1a1a;
-	--text: #f5f0eb;
-	--text-muted: #9a9590;
-	--accent: #c9a96e;
-	--accent-soft: rgba(201, 169, 110, 0.15);
-	--border: rgba(255, 255, 255, 0.08);
+	--bg: #121110;
+	--bg-elevated: #1a1917;
+	--bg-card: #22201d;
+	--text: #f0ebe4;
+	--text-muted: #a8a29a;
+	--accent: #d4b896;
+	--accent-soft: rgba(212, 184, 150, 0.12);
+	--border: rgba(255, 255, 255, 0.06);
+	--shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+	--shadow-soft: 0 8px 40px rgba(0, 0, 0, 0.15);
 	--serif: 'Cormorant Garamond', Georgia, serif;
 	--sans: 'DM Sans', system-ui, sans-serif;
-	--max-width: 1200px;
-	--section-gap: clamp(5rem, 12vw, 8rem);
+	--max-width: 1140px;
+	--section-gap: clamp(4rem, 10vw, 7rem);
+	--radius-sm: 10px;
+	--radius-md: 16px;
+	--radius-lg: 24px;
+	--radius-full: 999px;
+	--ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 *,
@@ -29,10 +36,14 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: var(--sans);
-	font-size: 1rem;
-	line-height: 1.7;
+	font-size: 1.0625rem;
+	font-weight: 300;
+	line-height: 1.75;
 	color: var(--text);
 	background: var(--bg);
+	background-image:
+		radial-gradient(ellipse 80% 50% at 50% -20%, rgba(212, 184, 150, 0.08), transparent),
+		radial-gradient(ellipse 60% 40% at 100% 100%, rgba(212, 184, 150, 0.04), transparent);
 	-webkit-font-smoothing: antialiased;
 }
 
@@ -45,7 +56,7 @@ img {
 a {
 	color: var(--accent);
 	text-decoration: none;
-	transition: color 0.2s ease, opacity 0.2s ease;
+	transition: color 0.3s var(--ease), opacity 0.3s var(--ease);
 }
 
 a:hover {
@@ -58,21 +69,21 @@ h3,
 h4 {
 	font-family: var(--serif);
 	font-weight: 400;
-	line-height: 1.15;
+	line-height: 1.2;
 	margin: 0;
 }
 
 h1 {
-	font-size: clamp(3rem, 8vw, 5.5rem);
-	letter-spacing: -0.02em;
+	font-size: clamp(2.75rem, 7vw, 4.75rem);
+	letter-spacing: -0.01em;
 }
 
 h2 {
-	font-size: clamp(2.25rem, 5vw, 3.5rem);
+	font-size: clamp(2rem, 4.5vw, 3rem);
 }
 
 h3 {
-	font-size: clamp(1.5rem, 3vw, 2rem);
+	font-size: clamp(1.35rem, 2.5vw, 1.75rem);
 }
 
 p {
@@ -87,16 +98,15 @@ p:last-child {
 .section-label {
 	display: inline-block;
 	font-family: var(--sans);
-	font-size: 0.75rem;
-	font-weight: 500;
-	letter-spacing: 0.2em;
-	text-transform: uppercase;
+	font-size: 0.8125rem;
+	font-weight: 400;
+	letter-spacing: 0.04em;
 	color: var(--accent);
-	margin-bottom: 1rem;
+	margin-bottom: 0.875rem;
 }
 
 .container {
-	width: min(var(--max-width), calc(100% - 3rem));
+	width: min(var(--max-width), calc(100% - 2.5rem));
 	margin-inline: auto;
 }
 
@@ -104,35 +114,41 @@ p:last-child {
 	display: inline-flex;
 	align-items: center;
 	gap: 0.5rem;
-	padding: 0.875rem 2rem;
+	padding: 0.875rem 1.75rem;
 	font-family: var(--sans);
-	font-size: 0.875rem;
-	font-weight: 500;
-	letter-spacing: 0.05em;
-	text-transform: uppercase;
+	font-size: 0.9375rem;
+	font-weight: 400;
+	letter-spacing: 0.01em;
 	color: var(--bg);
-	background: var(--accent);
+	background: linear-gradient(135deg, var(--accent), #c4a882);
 	border: none;
-	border-radius: 0;
+	border-radius: var(--radius-full);
 	cursor: pointer;
-	transition: background 0.2s ease, transform 0.2s ease;
+	box-shadow: 0 4px 16px rgba(212, 184, 150, 0.2);
+	transition:
+		transform 0.3s var(--ease),
+		box-shadow 0.3s var(--ease),
+		background 0.3s var(--ease);
 }
 
 .btn:hover {
-	background: var(--text);
+	transform: translateY(-2px);
+	box-shadow: 0 8px 24px rgba(212, 184, 150, 0.3);
 	color: var(--bg);
 }
 
 .btn-outline {
-	background: transparent;
+	background: rgba(255, 255, 255, 0.04);
 	color: var(--text);
 	border: 1px solid var(--border);
+	box-shadow: none;
 }
 
 .btn-outline:hover {
-	border-color: var(--accent);
+	border-color: rgba(212, 184, 150, 0.35);
 	color: var(--accent);
-	background: transparent;
+	background: var(--accent-soft);
+	transform: translateY(-2px);
 }
 
 .sr-only {
