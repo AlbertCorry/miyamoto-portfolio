@@ -1,13 +1,12 @@
 ---
-import { SITE_TITLE, PERSON } from '../consts';
-import Avatar from './Avatar.astro';
+import { PERSON } from '../consts';
+import Logo from './Logo.astro';
 ---
 
 <header class="site-header">
 	<nav class="container nav">
 		<a href="/" class="logo">
-			<Avatar src={PERSON.avatar} alt={PERSON.name} size="sm" />
-			<span>{SITE_TITLE}</span>
+			<Logo size="sm" alt={PERSON.name} />
 		</a>
 		<div class="nav-links">
 			<a href="/#about">About</a>
@@ -42,16 +41,12 @@ import Avatar from './Avatar.astro';
 	.logo {
 		display: flex;
 		align-items: center;
-		gap: 0.75rem;
-		font-family: var(--serif);
-		font-size: 1.2rem;
-		color: var(--text);
 		text-decoration: none;
-		transition: color 0.3s var(--ease);
+		transition: opacity 0.3s var(--ease);
 	}
 
 	.logo:hover {
-		color: var(--accent);
+		opacity: 0.85;
 	}
 
 	.nav-links {
@@ -94,10 +89,6 @@ import Avatar from './Avatar.astro';
 	}
 
 	@media (max-width: 768px) {
-		.logo span {
-			display: none;
-		}
-
 		.nav-links {
 			display: none;
 		}

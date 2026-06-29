@@ -1,6 +1,6 @@
 ---
-import { PERSON, SOCIAL, SITE_TITLE } from '../consts';
-import Avatar from './Avatar.astro';
+import { PERSON, SOCIAL } from '../consts';
+import Logo from './Logo.astro';
 
 const year = new Date().getFullYear();
 ---
@@ -8,11 +8,8 @@ const year = new Date().getFullYear();
 <footer class="site-footer">
 	<div class="container footer-inner">
 		<div class="footer-brand">
-			<Avatar src={PERSON.avatar} alt={PERSON.name} size="md" />
-			<div>
-				<span class="footer-name">{SITE_TITLE}</span>
-				<p>{PERSON.title}</p>
-			</div>
+			<Logo size="md" alt={PERSON.name} />
+			<p>{PERSON.title}</p>
 		</div>
 		<div class="footer-links">
 			<a href={`mailto:${PERSON.email}`}>{PERSON.email}</a>
@@ -43,16 +40,9 @@ const year = new Date().getFullYear();
 
 	.footer-brand {
 		display: flex;
-		align-items: center;
-		gap: 1rem;
-	}
-
-	.footer-name {
-		font-family: var(--serif);
-		font-size: 1.75rem;
-		color: var(--text);
-		display: block;
-		margin-bottom: 0.5rem;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.75rem;
 	}
 
 	.footer-brand p {

@@ -10,11 +10,13 @@ export const PERSON = {
 	email: 'terryq206@gmail.com',
 	phone: '+81 70-9358-3639',
 	location: 'Toyosu, Kōtō-ku, Tokyo 135-0061, Japan',
-	avatar: '/images/avatars/avatar-winter.png',
+	avatar: '/images/miyamoto-logo.png',
 };
 
+export const LOGO = '/images/miyamoto-logo.png';
+
 export const AVATARS = {
-	profile: '/images/avatars/avatar-winter.png',
+	profile: '/images/avatars/avatar-driving.png',
 	driving: '/images/avatars/avatar-driving.png',
 	brand: '/images/avatars/avatar-icon.png',
 	est: '/images/avatars/avatar-est.png',

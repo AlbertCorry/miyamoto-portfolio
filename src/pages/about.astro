@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Avatar from '../components/Avatar.astro';
+import Logo from '../components/Logo.astro';
 import SectionIcon from '../components/SectionIcon.astro';
 import {
 	PERSON,
@@ -30,7 +31,7 @@ import {
 		<main class="about-page">
 			<div class="container">
 				<div class="about-page-intro">
-					<Avatar src={PERSON.avatar} alt={PERSON.name} size="lg" />
+					<Logo size="lg" alt={PERSON.name} />
 					<div>
 						<span class="section-label">About</span>
 						<h1>About {PERSON.name}</h1>

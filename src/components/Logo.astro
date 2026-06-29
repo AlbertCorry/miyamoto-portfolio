@@ -1,0 +1,36 @@
+---
+interface Props {
+	size?: 'sm' | 'md' | 'lg' | 'xl';
+	alt?: string;
+	class?: string;
+}
+
+const { size = 'md', alt = 'Miyamoto logo', class: className = '' } = Astro.props;
+
+const heights = {
+	sm: '2.25rem',
+	md: '3.25rem',
+	lg: '4.5rem',
+	xl: '6rem',
+};
+---
+
+<img
+	src="/images/miyamoto-logo.png"
+	alt={alt}
+	class:list={['site-logo', `site-logo-${size}`, className]}
+	style={`--logo-height: ${heights[size]}`}
+	loading="eager"
+/>
+
+<style>
+	.site-logo {
+		height: var(--logo-height);
+		width: auto;
+		display: block;
+		border-radius: var(--radius-sm);
+		background: #fff;
+		padding: 0.2rem 0.35rem;
+		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+	}
+</style>

@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Avatar from '../components/Avatar.astro';
+import Logo from '../components/Logo.astro';
 import SectionIcon from '../components/SectionIcon.astro';
 import {
 	SITE_DESCRIPTION,
@@ -32,7 +33,7 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 				<div class="container hero-grid">
 					<div class="hero-content">
 						<div class="hero-identity">
-							<Avatar src={PERSON.avatar} alt={PERSON.name} size="lg" />
+							<Logo size="lg" alt={PERSON.name} />
 							<div>
 								<span class="section-label">Portfolio</span>
 								<h1>{PERSON.name}</h1>
@@ -252,7 +253,7 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 
 			<section id="contact" class="contact section">
 				<div class="container contact-inner">
-					<Avatar src={PERSON.avatar} alt={PERSON.name} size="xl" />
+					<Logo size="lg" alt={PERSON.name} />
 					<span class="section-label">Get in Touch</span>
 					<h2>Let's build something meaningful</h2>
 					<p>
