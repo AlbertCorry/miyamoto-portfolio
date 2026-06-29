@@ -33,7 +33,7 @@ export const ABOUT = [
 ];
 
 export const IMAGES = {
-	hero: '/images/portfolio/formal-suit.png',
+	hero: '/images/portfolio/hero-bentley.png',
 	about: '/images/portfolio/office-cafe.png',
 	gallery: [
 		{
