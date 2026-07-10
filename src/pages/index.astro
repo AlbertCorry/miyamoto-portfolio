@@ -15,6 +15,9 @@ import {
 	EDUCATION,
 	ACCOMPLISHMENTS,
 	FEATURED_PROJECT,
+	GITHUB,
+	GITHUB_REPOS,
+	SOCIAL,
 } from '../consts';
 
 const pageTitle = `${PERSON.name} — ${PERSON.title}`;
@@ -32,12 +35,17 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 			<section class="hero">
 				<div class="container hero-grid">
 					<div class="hero-content">
+						<span class="ai-badge">AI Developer</span>
 						<span class="section-label">Portfolio</span>
 						<h1>{PERSON.name}</h1>
 						<p class="hero-title">{PERSON.title}</p>
 						<p class="hero-tagline">{PERSON.tagline}</p>
 						<div class="hero-actions">
-							<a href="#projects" class="btn">View Projects</a>
+							<a href="#skills" class="btn">View AI Skills</a>
+							<a href={SOCIAL.github} class="btn btn-github" target="_blank" rel="noopener noreferrer">
+								<SectionIcon name="github" size={16} />
+								{GITHUB.handle}
+							</a>
 							<a href="#contact" class="btn btn-outline">Contact Me</a>
 						</div>
 					</div>
@@ -61,25 +69,67 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 					</div>
 					<div class="about-content">
 						<span class="section-label">About Me</span>
-						<h2>Building products that scale</h2>
+						<h2>Building intelligent systems that ship</h2>
 						{ABOUT.map((paragraph) => <p>{paragraph}</p>)}
-						<div class="skill-groups">
-							{
-								SKILL_GROUPS.map((group) => (
-									<div class="skill-group">
-										<div class="skill-group-header">
-											<SectionIcon name={group.icon} size={18} />
-											<h3>{group.label}</h3>
-										</div>
-										<div class="skills-tags">
-											{group.skills.map((skill) => (
-												<span class="skill-tag">{skill}</span>
-											))}
-										</div>
+						<a href="#skills" class="btn btn-outline">Explore my AI stack</a>
+					</div>
+				</div>
+			</section>
+
+			<section id="skills" class="skills section">
+				<div class="container">
+					<span class="section-label">Technical Skills</span>
+					<h2>AI developer toolkit</h2>
+					<p class="skills-intro">
+						From LLM orchestration and agent design to full-stack deployment — a stack built
+						for production AI systems.
+					</p>
+					<div class="skill-cards">
+						{
+							SKILL_GROUPS.map((group) => (
+								<div class:list={['skill-card', group.highlight && 'skill-card-highlight']}>
+									<div class="skill-card-header">
+										<SectionIcon name={group.icon} size={20} />
+										<h3>{group.label}</h3>
 									</div>
-								))
-							}
+									<div class="skills-tags">
+										{group.skills.map((skill) => (
+											<span class="skill-tag">{skill}</span>
+										))}
+									</div>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<section id="github" class="github section">
+				<div class="container">
+					<div class="github-header">
+						<div>
+							<span class="section-label">Open Source</span>
+							<h2>GitHub projects</h2>
+							<p>{GITHUB.bio}</p>
 						</div>
+						<a href={GITHUB.url} class="btn btn-github" target="_blank" rel="noopener noreferrer">
+							<SectionIcon name="github" size={18} />
+							github.com/{GITHUB.username}
+						</a>
+					</div>
+					<div class="repo-grid">
+						{
+							GITHUB_REPOS.map((repo) => (
+								<a href={repo.url} class="repo-card" target="_blank" rel="noopener noreferrer">
+									<div class="repo-card-top">
+										<SectionIcon name="code" size={16} />
+										<span class="repo-lang">{repo.language}</span>
+									</div>
+									<h3>{repo.name}</h3>
+									<p>{repo.description}</p>
+								</a>
+							))
+						}
 					</div>
 				</div>
 			</section>
@@ -268,6 +318,10 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 					<p class="contact-detail contact-address">{PERSON.location}</p>
 					<div class="contact-actions">
 						<a href={`mailto:${PERSON.email}`} class="btn">Send a Message</a>
+						<a href={SOCIAL.github} class="btn btn-github" target="_blank" rel="noopener noreferrer">
+							<SectionIcon name="github" size={16} />
+							GitHub
+						</a>
 					</div>
 				</div>
 			</section>
@@ -363,7 +417,7 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 		width: 55%;
 		height: 55%;
 		border-radius: var(--radius-lg);
-		background: linear-gradient(135deg, rgba(212, 184, 150, 0.15), transparent);
+		background: linear-gradient(135deg, rgba(125, 211, 252, 0.15), transparent);
 		z-index: 0;
 	}
 
@@ -428,6 +482,131 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 		font-weight: 300;
 	}
 
+	.about-content .btn {
+		margin-top: 0.5rem;
+	}
+
+	.skills {
+		background: linear-gradient(180deg, transparent, var(--bg-elevated) 15%, var(--bg-elevated) 85%, transparent);
+	}
+
+	.skills h2 {
+		margin-bottom: 0.75rem;
+	}
+
+	.skills-intro {
+		max-width: 52ch;
+		margin-bottom: 2.5rem;
+		font-weight: 300;
+	}
+
+	.skill-cards {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.25rem;
+	}
+
+	.skill-card {
+		padding: 1.5rem;
+		background: var(--bg-card);
+		border: 1px solid var(--border);
+		border-radius: var(--radius-md);
+		transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
+	}
+
+	.skill-card:hover {
+		transform: translateY(-3px);
+		box-shadow: var(--shadow);
+	}
+
+	.skill-card-highlight {
+		border-color: rgba(125, 211, 252, 0.25);
+		background: linear-gradient(145deg, rgba(125, 211, 252, 0.08), var(--bg-card));
+		box-shadow: 0 0 40px rgba(125, 211, 252, 0.06);
+	}
+
+	.skill-card-header {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		margin-bottom: 1rem;
+	}
+
+	.skill-card-header h3 {
+		font-family: var(--sans);
+		font-size: 0.9375rem;
+		font-weight: 400;
+		color: var(--accent);
+		margin: 0;
+	}
+
+	.github-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		gap: 2rem;
+		margin-bottom: 2rem;
+	}
+
+	.github-header p {
+		max-width: 48ch;
+		margin-top: 0.75rem;
+	}
+
+	.repo-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
+	}
+
+	.repo-card {
+		display: block;
+		padding: 1.5rem;
+		background: var(--bg-elevated);
+		border: 1px solid var(--border);
+		border-radius: var(--radius-md);
+		text-decoration: none;
+		transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
+	}
+
+	.repo-card:hover {
+		transform: translateY(-3px);
+		box-shadow: var(--shadow);
+		border-color: rgba(125, 211, 252, 0.25);
+		color: inherit;
+	}
+
+	.repo-card-top {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 0.875rem;
+	}
+
+	.repo-lang {
+		font-family: var(--mono);
+		font-size: 0.6875rem;
+		font-weight: 500;
+		color: var(--accent);
+		padding: 0.2rem 0.6rem;
+		background: var(--accent-soft);
+		border-radius: var(--radius-full);
+	}
+
+	.repo-card h3 {
+		font-family: var(--mono);
+		font-size: 1rem;
+		font-weight: 500;
+		color: var(--text);
+		margin-bottom: 0.5rem;
+	}
+
+	.repo-card p {
+		font-size: 0.875rem;
+		font-weight: 300;
+		margin: 0;
+	}
+
 	.skill-groups {
 		display: flex;
 		flex-direction: column;
@@ -458,18 +637,20 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 	}
 
 	.skill-tag {
-		padding: 0.45rem 1rem;
-		font-size: 0.8125rem;
-		font-weight: 300;
+		padding: 0.4rem 0.875rem;
+		font-family: var(--mono);
+		font-size: 0.75rem;
+		font-weight: 400;
 		color: var(--text);
 		background: var(--accent-soft);
-		border: 1px solid rgba(212, 184, 150, 0.12);
+		border: 1px solid rgba(125, 211, 252, 0.12);
 		border-radius: var(--radius-full);
-		transition: background 0.3s var(--ease);
+		transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
 	}
 
 	.skill-tag:hover {
-		background: rgba(212, 184, 150, 0.18);
+		background: rgba(125, 211, 252, 0.16);
+		border-color: rgba(125, 211, 252, 0.25);
 	}
 
 	.section-header {
@@ -893,6 +1074,8 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 	.contact-actions {
 		display: flex;
 		justify-content: center;
+		gap: 0.75rem;
+		flex-wrap: wrap;
 	}
 
 	@keyframes fadeUp {
@@ -920,9 +1103,16 @@ const pageTitle = `${PERSON.name} — ${PERSON.title}`;
 		.hero-grid,
 		.about-grid,
 		.experience-grid,
+		.skill-cards,
+		.repo-grid,
+		.github-header,
 		.challenge-solution,
 		.roadmap-grid {
 			grid-template-columns: 1fr;
+		}
+
+		.github-header {
+			flex-direction: column;
 		}
 
 		.hero-image {

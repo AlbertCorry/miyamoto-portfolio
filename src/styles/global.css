@@ -1,18 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-	--bg: #121110;
-	--bg-elevated: #1a1917;
-	--bg-card: #22201d;
-	--text: #f0ebe4;
-	--text-muted: #a8a29a;
-	--accent: #d4b896;
-	--accent-soft: rgba(212, 184, 150, 0.12);
-	--border: rgba(255, 255, 255, 0.06);
-	--shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
-	--shadow-soft: 0 8px 40px rgba(0, 0, 0, 0.15);
+	--bg: #0d0f14;
+	--bg-elevated: #141820;
+	--bg-card: #1a1f2a;
+	--text: #eef2f8;
+	--text-muted: #94a3b8;
+	--accent: #7dd3fc;
+	--accent-secondary: #d4b896;
+	--accent-soft: rgba(125, 211, 252, 0.1);
+	--accent-glow: rgba(125, 211, 252, 0.25);
+	--border: rgba(148, 163, 184, 0.12);
+	--shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+	--shadow-soft: 0 8px 40px rgba(0, 0, 0, 0.25);
 	--serif: 'Cormorant Garamond', Georgia, serif;
 	--sans: 'DM Sans', system-ui, sans-serif;
+	--mono: 'JetBrains Mono', ui-monospace, monospace;
 	--max-width: 1140px;
 	--section-gap: clamp(4rem, 10vw, 7rem);
 	--radius-sm: 10px;
@@ -42,8 +45,11 @@ body {
 	color: var(--text);
 	background: var(--bg);
 	background-image:
-		radial-gradient(ellipse 80% 50% at 50% -20%, rgba(212, 184, 150, 0.08), transparent),
-		radial-gradient(ellipse 60% 40% at 100% 100%, rgba(212, 184, 150, 0.04), transparent);
+		radial-gradient(ellipse 70% 50% at 20% -10%, rgba(125, 211, 252, 0.12), transparent),
+		radial-gradient(ellipse 50% 40% at 100% 0%, rgba(212, 184, 150, 0.06), transparent),
+		linear-gradient(rgba(125, 211, 252, 0.03) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(125, 211, 252, 0.03) 1px, transparent 1px);
+	background-size: auto, auto, 48px 48px, 48px 48px;
 	-webkit-font-smoothing: antialiased;
 }
 
@@ -97,12 +103,50 @@ p:last-child {
 
 .section-label {
 	display: inline-block;
-	font-family: var(--sans);
-	font-size: 0.8125rem;
-	font-weight: 400;
-	letter-spacing: 0.04em;
+	font-family: var(--mono);
+	font-size: 0.75rem;
+	font-weight: 500;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
 	color: var(--accent);
 	margin-bottom: 0.875rem;
+}
+
+.ai-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.35rem 0.875rem;
+	font-family: var(--mono);
+	font-size: 0.6875rem;
+	font-weight: 500;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--accent);
+	background: var(--accent-soft);
+	border: 1px solid rgba(125, 211, 252, 0.2);
+	border-radius: var(--radius-full);
+	margin-bottom: 1rem;
+}
+
+.ai-badge::before {
+	content: '';
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: var(--accent);
+	box-shadow: 0 0 8px var(--accent-glow);
+	animation: pulse 2s var(--ease) infinite;
+}
+
+@keyframes pulse {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.4;
+	}
 }
 
 .container {
@@ -120,35 +164,47 @@ p:last-child {
 	font-weight: 400;
 	letter-spacing: 0.01em;
 	color: var(--bg);
-	background: linear-gradient(135deg, var(--accent), #c4a882);
+	background: linear-gradient(135deg, var(--accent), #38bdf8);
 	border: none;
 	border-radius: var(--radius-full);
 	cursor: pointer;
-	box-shadow: 0 4px 16px rgba(212, 184, 150, 0.2);
+	box-shadow: 0 4px 20px var(--accent-glow);
 	transition:
 		transform 0.3s var(--ease),
-		box-shadow 0.3s var(--ease),
-		background 0.3s var(--ease);
+		box-shadow 0.3s var(--ease);
 }
 
 .btn:hover {
 	transform: translateY(-2px);
-	box-shadow: 0 8px 24px rgba(212, 184, 150, 0.3);
+	box-shadow: 0 8px 28px var(--accent-glow);
 	color: var(--bg);
 }
 
 .btn-outline {
-	background: rgba(255, 255, 255, 0.04);
+	background: rgba(255, 255, 255, 0.03);
 	color: var(--text);
 	border: 1px solid var(--border);
 	box-shadow: none;
 }
 
 .btn-outline:hover {
-	border-color: rgba(212, 184, 150, 0.35);
+	border-color: rgba(125, 211, 252, 0.35);
 	color: var(--accent);
 	background: var(--accent-soft);
 	transform: translateY(-2px);
+}
+
+.btn-github {
+	background: rgba(255, 255, 255, 0.06);
+	color: var(--text);
+	border: 1px solid var(--border);
+	box-shadow: none;
+}
+
+.btn-github:hover {
+	border-color: rgba(125, 211, 252, 0.4);
+	background: var(--accent-soft);
+	color: var(--accent);
 }
 
 .sr-only {

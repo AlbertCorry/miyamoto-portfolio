@@ -1,5 +1,5 @@
 ---
-import { PERSON } from '../consts';
+import { PERSON, SOCIAL, GITHUB } from '../consts';
 import Logo from './Logo.astro';
 ---
 
@@ -10,11 +10,15 @@ import Logo from './Logo.astro';
 		</a>
 		<div class="nav-links">
 			<a href="/#about">About</a>
+			<a href="/#skills">Skills</a>
+			<a href="/#github">GitHub</a>
 			<a href="/#projects">Projects</a>
 			<a href="/#experience">Experience</a>
 			<a href="/#contact">Contact</a>
 		</div>
-		<a href="/#contact" class="nav-cta">Get in Touch</a>
+		<a href={SOCIAL.github} class="nav-github" target="_blank" rel="noopener noreferrer">
+			{GITHUB.handle}
+		</a>
 	</nav>
 </header>
 
@@ -26,7 +30,7 @@ import Logo from './Logo.astro';
 		right: 0;
 		z-index: 100;
 		padding: 1rem 0;
-		background: rgba(18, 17, 16, 0.72);
+		background: rgba(13, 15, 20, 0.8);
 		backdrop-filter: blur(20px);
 		border-bottom: 1px solid var(--border);
 	}
@@ -35,7 +39,7 @@ import Logo from './Logo.astro';
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: 2rem;
+		gap: 1.5rem;
 	}
 
 	.logo {
@@ -43,6 +47,7 @@ import Logo from './Logo.astro';
 		align-items: center;
 		text-decoration: none;
 		transition: opacity 0.3s var(--ease);
+		flex-shrink: 0;
 	}
 
 	.logo:hover {
@@ -51,11 +56,11 @@ import Logo from './Logo.astro';
 
 	.nav-links {
 		display: flex;
-		gap: 1.75rem;
+		gap: 1.25rem;
 	}
 
 	.nav-links a {
-		font-size: 0.9375rem;
+		font-size: 0.875rem;
 		font-weight: 400;
 		color: var(--text-muted);
 		text-decoration: none;
@@ -63,32 +68,34 @@ import Logo from './Logo.astro';
 	}
 
 	.nav-links a:hover {
-		color: var(--text);
+		color: var(--accent);
 	}
 
-	.nav-cta {
-		font-size: 0.875rem;
-		font-weight: 400;
+	.nav-github {
+		font-family: var(--mono);
+		font-size: 0.8125rem;
+		font-weight: 500;
 		color: var(--text);
 		text-decoration: none;
-		padding: 0.5rem 1.25rem;
+		padding: 0.5rem 1rem;
 		background: var(--accent-soft);
-		border: 1px solid rgba(212, 184, 150, 0.2);
+		border: 1px solid rgba(125, 211, 252, 0.2);
 		border-radius: var(--radius-full);
+		white-space: nowrap;
 		transition:
 			background 0.3s var(--ease),
 			border-color 0.3s var(--ease),
 			transform 0.3s var(--ease);
 	}
 
-	.nav-cta:hover {
-		background: rgba(212, 184, 150, 0.2);
-		border-color: rgba(212, 184, 150, 0.4);
-		color: var(--text);
+	.nav-github:hover {
+		background: rgba(125, 211, 252, 0.16);
+		border-color: rgba(125, 211, 252, 0.35);
+		color: var(--accent);
 		transform: translateY(-1px);
 	}
 
-	@media (max-width: 768px) {
+	@media (max-width: 900px) {
 		.nav-links {
 			display: none;
 		}

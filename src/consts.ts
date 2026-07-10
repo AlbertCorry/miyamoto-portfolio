@@ -1,12 +1,12 @@
 export const SITE_TITLE = 'Miyamoto Ichihiro';
 export const SITE_DESCRIPTION =
-	'Software Engineer & AI Architect — building enterprise platforms, SaaS products, and AI-powered solutions.';
+	'AI Developer & ML Engineer — building intelligent applications, LLM systems, and full-stack AI products.';
 
 export const PERSON = {
 	name: 'Miyamoto Ichihiro',
-	title: 'Software Engineer, AI Architect',
+	title: 'AI Developer & ML Engineer',
 	tagline:
-		'Solving complex problems, creating scalable systems, and building meaningful products with talented teams.',
+		'Designing and shipping AI-powered products — from LLM agents and enterprise automation to full-stack intelligent applications.',
 	email: 'terryq206@gmail.com',
 	phone: '+81 70-9358-3639',
 	location: 'Toyosu, Kōtō-ku, Tokyo 135-0061, Japan',
@@ -23,13 +23,20 @@ export const AVATARS = {
 };
 
 export const SOCIAL = {
-	github: 'https://github.com',
+	github: 'https://github.com/aomatsun',
 	linkedin: 'https://linkedin.com',
 };
 
+export const GITHUB = {
+	url: 'https://github.com/aomatsun',
+	username: 'aomatsun',
+	handle: '@aomatsun',
+	bio: 'Full stack developer building intelligent applications and production AI systems.',
+};
+
 export const ABOUT = [
-	'Over the past 6 years, I have worked across software development, product management, and startup operations. My experience ranges from building enterprise software and SaaS platforms to leading product teams and launching new digital products.',
-	'I enjoy solving complex problems, creating scalable systems, and working with talented people who are passionate about building meaningful products. I believe that successful startups are built by teams that genuinely care about their users and continuously improve both their product and themselves.',
+	'I am an AI developer with 6+ years across machine learning applications, software engineering, product management, and startup operations. I specialize in turning AI research into production-ready systems that solve real business problems.',
+	'My work spans LLM-powered agents, enterprise automation, SaaS platforms, and full-stack development. I enjoy architecting intelligent systems, leading cross-functional teams, and continuously pushing the boundaries of what AI can do in production.',
 ];
 
 export const IMAGES = {
@@ -66,38 +73,60 @@ export const IMAGES = {
 
 export const SKILL_GROUPS = [
 	{
-		label: 'Frameworks & Technologies',
-		icon: 'code',
-		skills: [
-			'React',
-			'Next.js',
-			'Node.js',
-			'FastAPI',
-			'ASP.NET Core',
-			'C#',
-			'PostgreSQL',
-			'SQL Server',
-			'Redis',
-			'Docker',
-			'Kubernetes',
-		],
-	},
-	{
-		label: 'AI & Data',
+		label: 'AI & Machine Learning',
 		icon: 'brain',
+		highlight: true,
 		skills: [
 			'OpenAI APIs',
 			'LLM Applications',
 			'AI Agents',
+			'RAG Pipelines',
+			'Prompt Engineering',
 			'Recommendation Systems',
-			'Analytics Platforms',
 			'Data Visualization',
 		],
+	},
+	{
+		label: 'Full Stack Development',
+		icon: 'code',
+		skills: ['TypeScript', 'React', 'Next.js', 'Node.js', 'FastAPI', 'ASP.NET Core', 'C#'],
+	},
+	{
+		label: 'Infrastructure & Data',
+		icon: 'database',
+		skills: ['PostgreSQL', 'SQL Server', 'Redis', 'Docker', 'Kubernetes', 'Analytics Platforms'],
 	},
 	{
 		label: 'Languages',
 		icon: 'globe',
 		skills: ['English', 'Japanese'],
+	},
+];
+
+export const GITHUB_REPOS = [
+	{
+		name: 'pmine-ui-develop',
+		language: 'TypeScript',
+		description: 'Modern UI development with TypeScript and component-driven architecture.',
+		url: 'https://github.com/aomatsun/pmine-ui-develop',
+	},
+	{
+		name: 'mychart',
+		language: 'JavaScript',
+		description: 'React charting project using ApexCharts, Chart.js, and CanvasJS.',
+		url: 'https://github.com/aomatsun/mychart',
+	},
+	{
+		name: '3dslicer',
+		language: 'C++',
+		description: '3D medical imaging and visualization toolkit integration.',
+		url: 'https://github.com/aomatsun/3dslicer',
+	},
+	{
+		name: 'vdc-react-master',
+		language: 'CSS',
+		description: 'React-based visual data components and interface patterns.',
+		url: 'https://github.com/aomatsun/vdc-react-master',
 	},
 ];
 
@@ -141,10 +170,10 @@ export const EDUCATION = {
 };
 
 export const ACCOMPLISHMENTS = [
+	{ text: 'Built AI-powered applications for consumer and enterprise markets', icon: 'brain' },
 	{ text: 'Launched multiple SaaS products serving thousands of users', icon: 'rocket' },
-	{ text: 'Built and scaled engineering teams from early-stage startup environments', icon: 'users' },
-	{ text: 'Successfully led cross-functional teams across product, engineering, and operations', icon: 'briefcase' },
-	{ text: 'Developed AI-powered applications for consumer and enterprise markets', icon: 'brain' },
+	{ text: 'Defined enterprise AI roadmaps including workflow automation and intelligent assistants', icon: 'sparkles' },
+	{ text: 'Led cross-functional teams across AI, product, engineering, and operations', icon: 'users' },
 ];
 
 export const FEATURED_PROJECT = {
